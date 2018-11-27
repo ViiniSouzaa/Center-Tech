@@ -14,23 +14,14 @@ public class Produto {
     String nome;
     String marca;
     double preco;
-    int quantidade;
     
-    public Produto(int id, String nome, String descricao, double preco, int quantidade) {
+    public Produto(int id, String nome, String descricao, double preco) {
         this.id = id;
         this.nome = nome;
         this.marca = descricao;
         this.preco = preco;
-        this.quantidade = quantidade;
     }
 
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
 
     public Produto() {
         

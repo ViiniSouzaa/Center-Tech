@@ -14,7 +14,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import model.DAO.EstoqueDAO;
 import model.DAO.ProdutoDAO;
+import model.Estoque;
 import model.Produto;
 
 /**
@@ -51,15 +53,19 @@ public class AlterProdutoController implements Initializable {
     
     ProdutoDAO produtoDao = new ProdutoDAO();
     
+    EstoqueDAO estoqueDao =  new EstoqueDAO();
+    
 
     @FXML
     void alterarAction(ActionEvent event) {
         Produto produto = new Produto();
+        Estoque estoque =  new Estoque();
         produto.setId(Integer.parseInt(labelId.getText()));
         produto.setNome(labelNome.getText());
         produto.setMarca(labelMarca.getText());
         produto.setPreco(Float.parseFloat(labelPreco.getText()));
-        produto.setQuantidade(Integer.parseInt(labelQuantidade.getText()));
+        estoque.setQuantidade(Integer.parseInt(labelQuantidade.getText()));
+        estoque.setId_Produto(Integer.parseInt(labelId.getText()));
         produtoDao.update(produto);
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
@@ -72,10 +78,11 @@ public class AlterProdutoController implements Initializable {
     @FXML
     void procuraAction(ActionEvent event) {
         List<Produto> produtos =  produtoDao.getProduto(Integer.parseInt(labelId.getText()));
+        List<Estoque> produto =  estoqueDao.getEstoque(Integer.parseInt(labelId.getText()));
         labelNome.setText(produtos.get(0).getNome());
         labelMarca.setText(produtos.get(0).getMarca());
         labelPreco.setText(String.valueOf(produtos.get(0).getPreco()));
-        labelQuantidade.setText(String.valueOf(produtos.get(0).getQuantidade()));
+        labelQuantidade.setText(String.valueOf(produto.get(0).getQuantidade()));
     }
     
     @Override

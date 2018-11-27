@@ -37,7 +37,6 @@ public class ProdutoDAO extends DataBaseGeneric implements ImplementsProduto{
         mapObj.put("nome", produto.getNome());
         mapObj.put("marca", produto.getMarca());
         mapObj.put("preco", produto.getPreco());
-        mapObj.put("quantidade", produto.getQuantidade());
         this.genericInsert(mapObj);
     }
 
@@ -48,7 +47,6 @@ public class ProdutoDAO extends DataBaseGeneric implements ImplementsProduto{
         mapObj.put("nome", produto.getNome());
         mapObj.put("marca", produto.getMarca());
         mapObj.put("preco", produto.getPreco());
-        mapObj.put("quantidade", produto.getQuantidade());
         mapConditions.put("id", produto.getId());
         this.genericUpdate(mapObj, mapConditions);
     }
@@ -70,7 +68,6 @@ public class ProdutoDAO extends DataBaseGeneric implements ImplementsProduto{
                 produto.setNome(rs.getString("nome"));
                 produto.setMarca(rs.getString("marca"));
                 produto.setPreco(rs.getFloat("preco"));
-                produto.setQuantidade(rs.getInt("quantidade"));
                 list.add(produto);
             }
             return list;
@@ -91,7 +88,6 @@ public class ProdutoDAO extends DataBaseGeneric implements ImplementsProduto{
                 produto.setNome(rs.getString("nome"));
                 produto.setMarca(rs.getString("marca"));
                 produto.setPreco(rs.getFloat("preco"));
-                produto.setQuantidade(rs.getInt("quantidade"));
                 list.add(produto);
             }
             return list;
@@ -99,6 +95,26 @@ public class ProdutoDAO extends DataBaseGeneric implements ImplementsProduto{
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    @Override
+    public int getUltimoProduto() {
+        this.list = new ArrayList<>();
+        try{
+            ResultSet rs = this.getLike("id", "= max(id)");
+            while(rs.next()){
+                Produto produto = new Produto();
+                produto.setId(rs.getInt(1));
+                produto.setNome(rs.getString("nome"));
+                produto.setMarca(rs.getString("marca"));
+                produto.setPreco(rs.getFloat("preco"));
+                list.add(produto);
+            }
+            return list.get(0).getId();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
     
 }

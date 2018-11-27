@@ -97,5 +97,25 @@ public class ClienteDAO extends DataBaseGeneric implements ImplementsCliente{
         }
         return null;
 }
+
+    @Override
+    public List<Cliente> getClienteNome(String nome) {
+        this.list = new ArrayList<>();
+        try{
+            ResultSet rs = this.getLike("nome", nome);
+            while(rs.next()){
+                Cliente cliente = new Cliente();
+                cliente.setCPF(rs.getString("cpf"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setEndereco(rs.getString("endereco"));
+                cliente.setTelefone(rs.getString("telefone"));
+                list.add(cliente);
+            }
+            return list;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
     
 }

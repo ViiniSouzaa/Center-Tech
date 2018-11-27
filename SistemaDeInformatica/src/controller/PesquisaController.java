@@ -35,7 +35,7 @@ public class PesquisaController implements Initializable {
             stage.show();
             ((Node)(event.getSource())).getScene().getWindow().hide();
         } catch (IOException ex) {
-            System.out.println(ex);
+            System.out.println("DEU RUIM");
         }
     }
     

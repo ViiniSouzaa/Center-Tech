@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 import model.DAO.EstoqueDAO;
 import model.DAO.ProdutoDAO;
+import model.Estoque;
 import model.Produto;
 
 /**
@@ -49,11 +50,14 @@ public class CadastroProdutoFormController implements Initializable {
     @FXML
     void adicionarAction(ActionEvent event) {
         Produto produto = new Produto();
+        Estoque estoque = new Estoque();
         produto.setNome(labelNome.getText());
         produto.setMarca(labelMarca.getText());
         produto.setPreco(Float.parseFloat(labelPreco.getText()));
-        produto.setQuantidade(Integer.parseInt(labelQuant.getText()));
         produtoDao.insert(produto);
+ 
+        estoque.setQuantidade(Integer.parseInt(labelQuant.getText()));
+        estoqueDao.insert(estoque);
         
         JOptionPane.showMessageDialog(null, "Inserido com sucesso!");
         ((Node)(event.getSource())).getScene().getWindow().hide();

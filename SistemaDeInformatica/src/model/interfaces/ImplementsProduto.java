@@ -23,4 +23,7 @@ public interface ImplementsProduto {
     
     public List<Produto> getAllProduto();
     
+    public int getUltimoProduto();
+    
+    
 }

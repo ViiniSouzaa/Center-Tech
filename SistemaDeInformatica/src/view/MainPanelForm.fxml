@@ -8,11 +8,11 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: GRAY;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainPanelFormController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: GRAY;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainPanelFormController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="60.0" layoutY="14.0" prefHeight="119.0" prefWidth="371.0" text="INFOTECH">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="5.0" layoutY="14.0" prefHeight="119.0" prefWidth="488.0" text="CENTER-TECH">
          <font>
-            <Font name="Advent Pro Bold" size="96.0" />
+            <Font name="Times New Roman" size="70.0" />
          </font>
          <textFill>
             <LinearGradient cycleMethod="REPEAT" endX="0.7067307692307693" endY="0.8076923076923077" startX="0.21634615384615385" startY="0.2932692307692308">
@@ -27,7 +27,7 @@
       </Label>
       <Button fx:id="CadastroButton" layoutX="53.0" layoutY="150.0" mnemonicParsing="false" onAction="#cadastroClick" prefHeight="60.0" prefWidth="385.0" style="-fx-background-color: ORANGE;" text="CADASTRO PESSOA / PRODUTO">
          <font>
-            <Font name="Advent Pro Bold" size="25.0" />
+            <Font name="Times New Roman" size="22.0" />
          </font>
          <textFill>
             <LinearGradient cycleMethod="REPEAT" endX="0.7067307692307693" endY="0.8076923076923077" startX="0.21634615384615385" startY="0.2932692307692308">

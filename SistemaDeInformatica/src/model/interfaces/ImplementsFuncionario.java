@@ -21,5 +21,7 @@ public interface ImplementsFuncionario {
     
     public List<Funcionario> getFuncionario(String cpf);
     
+    public List<Funcionario> getFuncionarioNome(String nome);
+    
     public List<Funcionario> getAllFuncionario();
 }

@@ -85,6 +85,7 @@ public class FuncionarioDAO extends DataBaseGeneric implements ImplementsFuncion
                 funcionario.setCPF(rs.getString("cpf"));
                 funcionario.setNome(rs.getString("nome"));
                 funcionario.setEndereco(rs.getString("endereco"));
+                funcionario.setTelefone(rs.getString("telefone"));
                 list.add(funcionario);
             }
             return list;
@@ -93,4 +94,24 @@ public class FuncionarioDAO extends DataBaseGeneric implements ImplementsFuncion
         }
         return null;
 }
+
+    @Override
+    public List<Funcionario> getFuncionarioNome(String nome) {
+        this.list = new ArrayList<>();
+        try{
+            ResultSet rs = this.getLike("nome", nome);
+            while(rs.next()){
+                Funcionario funcionario = new Funcionario();
+                funcionario.setCPF(rs.getString("cpf"));
+                funcionario.setNome(rs.getString("nome"));
+                funcionario.setEndereco(rs.getString("endereco"));
+                funcionario.setTelefone(rs.getString("telefone"));
+                list.add(funcionario);
+            }
+            return list;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

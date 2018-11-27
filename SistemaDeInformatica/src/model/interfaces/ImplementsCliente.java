@@ -21,5 +21,7 @@ public interface ImplementsCliente {
     
     public List<Cliente> getCliente(String cpf);
     
+    public List<Cliente> getClienteNome(String nome);
+    
     public List<Cliente> getAllCliente();
 }
