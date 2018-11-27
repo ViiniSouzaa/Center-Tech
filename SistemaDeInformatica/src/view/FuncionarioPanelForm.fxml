@@ -14,8 +14,8 @@
         <columns>
           <TableColumn prefWidth="100.0" text="CPF" />
           <TableColumn prefWidth="127.0" text="Nome" />
-            <TableColumn prefWidth="173.0" text="Endereco" />
-            <TableColumn prefWidth="100.0" text="Telefone" />
+          <TableColumn prefWidth="173.0" text="Endereco" />
+          <TableColumn prefWidth="100.0" text="Telefone" />
         </columns>
       </TableView>
       <Button layoutX="399.0" layoutY="60.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="87.0" style="-fx-background-color: orange;" text="Atualizar">

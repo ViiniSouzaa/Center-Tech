@@ -1,8 +1,6 @@
 package controller;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,24 +14,29 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javax.swing.JOptionPane;
 import model.Cliente;
-import model.DAO.ClienteDAO;
+import model.ClienteGenerico;
 
-public class ClientePanelFormController implements Initializable{
-
-    @FXML
-    private TableView<Cliente> table;
-
-    @FXML
-    private TableColumn<Cliente, String> tableColumnCpf;
-
-    @FXML
-    private TableColumn<Cliente, String> tableColumnNome;
+public class ClientePanelFormController implements Initializable{    
+   /* private List<Cliente> clientes;
+    
+    private ClienteDAO clienteDao;*/
+    
+    ControladorTableCliente controlador;
 
     @FXML
-    private TableColumn<Cliente, String> tableColumnEndereco;
+    private TableView<ClienteGenerico> table;
+    
+    @FXML
+    private TableColumn<ClienteGenerico, String> colCpf;
 
     @FXML
-    private TableColumn<Cliente, String> tableColumnTelefone;
+    private TableColumn<ClienteGenerico, String> colNome;
+
+    @FXML
+    private TableColumn<ClienteGenerico, String> colEnredeco;
+
+    @FXML
+    private TableColumn<ClienteGenerico, String> colTelefone;
 
     @FXML
     private Button atualizarButton;
@@ -46,43 +49,37 @@ public class ClientePanelFormController implements Initializable{
 
     @FXML
     private TextField labelCpf;
-    
-    private List<Cliente> clientes =  new ArrayList();
-    
-    private ObservableList<Cliente> obsClientes;
-    
-    private final ClienteDAO clienteDao = new ClienteDAO();
 
     @FXML
-    public void atualizarAction(ActionEvent event) {
-         
+    void atualizarAction(ActionEvent event) {
+        
     }
 
     @FXML
-    public void pesquisaAction(ActionEvent event) {
-         
-    }
-    
-    public void carregarTable(){
-        tableColumnCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
-        tableColumnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        tableColumnEndereco.setCellValueFactory(new PropertyValueFactory<>("endereco"));
-        tableColumnTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
-        
-        clientes =  clienteDao.getAllCliente();
-        
-        obsClientes =  FXCollections.observableArrayList(clientes);
-        table.setItems(obsClientes);
+    void pesquisaAction(ActionEvent event) {
+
     }
 
+    
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL arg0, ResourceBundle arg1) {
         carregarTable();
         table.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> selecionaItemTable(newValue));
     }
     
-    public void selecionaItemTable(Cliente cliente){
-        JOptionPane.showMessageDialog(null, "Cliente: " + cliente.getNome() + "\nCPF : " + cliente.getCPF() + "\nEndereço : " + cliente.getEndereco() + "\nTelefone : " + cliente.getTelefone());
+        public void carregarTable(){
+        controlador = new ControladorTableCliente();
+        colCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+        colNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        colEnredeco.setCellValueFactory(new PropertyValueFactory<>("endereco"));
+        colTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
+        
+        ObservableList<ClienteGenerico> genericos = FXCollections.observableArrayList(controlador.listaClientes());
+        table.setItems(genericos);
+    }
+    
+    public void selecionaItemTable(ClienteGenerico cliente){
+        JOptionPane.showMessageDialog(null, "Cliente: " + cliente.getNome() + "\nCPF : " + cliente.getCpf() + "\nEndereço : " + cliente.getEndereco() + "\nTelefone : " + cliente.getTelefone());
     }
 
 }
