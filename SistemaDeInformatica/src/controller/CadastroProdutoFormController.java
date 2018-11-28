@@ -55,7 +55,9 @@ public class CadastroProdutoFormController implements Initializable {
         produto.setMarca(labelMarca.getText());
         produto.setPreco(Float.parseFloat(labelPreco.getText()));
         produtoDao.insert(produto);
- 
+        
+        System.out.println(produtoDao.getUltimoProduto());
+        estoque.setId_Produto(produtoDao.getUltimoProduto());
         estoque.setQuantidade(Integer.parseInt(labelQuant.getText()));
         estoqueDao.insert(estoque);
         

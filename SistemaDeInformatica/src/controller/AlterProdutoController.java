@@ -77,12 +77,12 @@ public class AlterProdutoController implements Initializable {
 
     @FXML
     void procuraAction(ActionEvent event) {
-        List<Produto> produtos =  produtoDao.getProduto(Integer.parseInt(labelId.getText()));
-        List<Estoque> produto =  estoqueDao.getEstoque(Integer.parseInt(labelId.getText()));
-        labelNome.setText(produtos.get(0).getNome());
-        labelMarca.setText(produtos.get(0).getMarca());
-        labelPreco.setText(String.valueOf(produtos.get(0).getPreco()));
-        labelQuantidade.setText(String.valueOf(produto.get(0).getQuantidade()));
+        Produto produtos =  produtoDao.getProduto(Integer.parseInt(labelId.getText()));
+        Estoque produto =  estoqueDao.getEstoque(Integer.parseInt(labelId.getText()));
+        labelNome.setText(produtos.getNome());
+        labelMarca.setText(produtos.getMarca());
+        labelPreco.setText(String.valueOf(produtos.getPreco()));
+        labelQuantidade.setText(String.valueOf(produto.getQuantidade()));
     }
     
     @Override

@@ -58,18 +58,53 @@ public class ProdutoDAO extends DataBaseGeneric implements ImplementsProduto{
     }
 
     @Override
-    public List<Produto> getProduto(int id) {
-        this.list = new ArrayList<>();
+    public Produto getProduto(int id) {
         try{
             ResultSet rs = this.getOne("id", id);
-            while(rs.next()){
                 Produto produto = new Produto();
                 produto.setId(rs.getInt(1));
                 produto.setNome(rs.getString("nome"));
                 produto.setMarca(rs.getString("marca"));
                 produto.setPreco(rs.getFloat("preco"));
-                list.add(produto);
-            }
+                return produto;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    
+    public List<Produto> getProdutoNome(String nome) {
+        this.list = new ArrayList<>();
+        try{
+            ResultSet rs = this.getLike("nome", nome);
+                while(rs.next()){
+                    Produto produto = new Produto();
+                    produto.setId(rs.getInt(1));
+                    produto.setNome(rs.getString("nome"));
+                    produto.setMarca(rs.getString("marca"));
+                    produto.setPreco(rs.getFloat("preco"));
+                    list.add(produto);
+                }
+            return list;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public List<Produto> getProdutoMarca(String marca) {
+        this.list = new ArrayList<>();
+        try{
+            ResultSet rs = this.getLike("marca", marca);
+                while(rs.next()){
+                    Produto produto = new Produto();
+                    produto.setId(rs.getInt(1));
+                    produto.setNome(rs.getString("nome"));
+                    produto.setMarca(rs.getString("marca"));
+                    produto.setPreco(rs.getFloat("preco"));
+                    list.add(produto);
+                }
             return list;
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -100,8 +135,9 @@ public class ProdutoDAO extends DataBaseGeneric implements ImplementsProduto{
     @Override
     public int getUltimoProduto() {
         this.list = new ArrayList<>();
+        int i = -1;
         try{
-            ResultSet rs = this.getLike("id", "= max(id)");
+            ResultSet rs = this.getAll();
             while(rs.next()){
                 Produto produto = new Produto();
                 produto.setId(rs.getInt(1));
@@ -109,8 +145,9 @@ public class ProdutoDAO extends DataBaseGeneric implements ImplementsProduto{
                 produto.setMarca(rs.getString("marca"));
                 produto.setPreco(rs.getFloat("preco"));
                 list.add(produto);
+                i = produto.getId();
             }
-            return list.get(0).getId();
+            return i;
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

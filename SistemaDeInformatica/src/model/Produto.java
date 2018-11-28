@@ -10,10 +10,10 @@ package model;
  * @author vinicius
  */
 public class Produto {
-    int id;
-    String nome;
-    String marca;
-    double preco;
+    private int id;
+    private String nome;
+    private String marca;
+    private double preco;
     
     public Produto(int id, String nome, String descricao, double preco) {
         this.id = id;
@@ -25,6 +25,10 @@ public class Produto {
 
     public Produto() {
         
+    }
+
+    public Produto(Produto produto) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getId() {

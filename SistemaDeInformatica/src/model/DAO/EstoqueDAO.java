@@ -54,17 +54,16 @@ public class EstoqueDAO extends DataBaseGeneric implements ImplementsEstoque{
     }
 
     @Override
-    public List<Estoque> getEstoque(int id) {
-        list =  new ArrayList<>();
+    public Estoque getEstoque(int id) {
         try{
             ResultSet rs = this.getLike("id_Produto", String.valueOf(id));
             while(rs.next()){
                 Estoque estoque =  new Estoque();
                 estoque.setId_Produto(rs.getInt("id_Produto"));
                 estoque.setQuantidade(rs.getInt("quantidade"));
-                list.add(estoque);
+                return estoque;
             }
-            return list;
+            return null;
         } catch (SQLException ex) {
             Logger.getLogger(EstoqueDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

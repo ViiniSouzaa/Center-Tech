@@ -3,10 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/vinicius/Downloads/Center-Tech-master/SistemaDeInformatica/src/model/Estoque.java</file>
             <file>file:/C:/Users/vinicius/Downloads/Center-Tech-master/SistemaDeInformatica/src/controller/ProdutoPanelFormController.java</file>
             <file>file:/C:/Users/vinicius/Downloads/Center-Tech-master/SistemaDeInformatica/src/model/DAO/ProdutoDAO.java</file>
-            <file>file:/C:/Users/vinicius/Downloads/Center-Tech-master/SistemaDeInformatica/src/controller/CadastroProdutoFormController.java</file>
+            <file>file:/C:/Users/vinicius/Downloads/Center-Tech-master/SistemaDeInformatica/src/controller/ClientePanelFormController.java</file>
         </group>
     </open-files>
 </project-private>

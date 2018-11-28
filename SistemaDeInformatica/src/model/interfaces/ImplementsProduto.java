@@ -19,7 +19,7 @@ public interface ImplementsProduto {
     
     public void delete(int id);
     
-    public List<Produto> getProduto(int id);
+    public Produto getProduto(int id);
     
     public List<Produto> getAllProduto();
     

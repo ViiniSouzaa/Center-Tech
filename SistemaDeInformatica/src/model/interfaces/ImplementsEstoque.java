@@ -17,7 +17,7 @@ public interface ImplementsEstoque {
     public void insert(Estoque estoque);
     public void update(Estoque estoque);
     public void delete(int id);
-    public List<Estoque> getEstoque(int id);
+    public Estoque getEstoque(int id);
     public List<Estoque> getAllEstoque();
     
 }
